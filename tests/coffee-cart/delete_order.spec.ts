@@ -14,5 +14,8 @@ test('Delete order', async ({ page }) => {
   ).toBeVisible();
   
   await page.locator('button.delete').click();
-  await expect(page.locator('.list p:has-tex("No coffee, go add some.")'));
+  
+  await expect(
+    page.locator('.list p:has-text("No coffee, go add some.")')
+  ).toBeVisible();
 });
