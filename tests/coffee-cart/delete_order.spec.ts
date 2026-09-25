@@ -5,8 +5,8 @@ test('Delete order', async ({ page }) => {
 
   await page.getByTestId('Espresso').click();
 
-  await page.getByRole('link', { name: 'Cart page' }).click();
-  // await page.locator('[aria-label="Cart page"]').click();
+  //await page.getByRole('link', { name: 'Cart page' }).click();
+  await page.locator('[aria-label="Cart page"]').click();
   // await page.getByLabel('Cart page').click();
   
   await expect(
