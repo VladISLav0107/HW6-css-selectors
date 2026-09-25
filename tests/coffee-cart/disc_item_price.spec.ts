@@ -9,15 +9,15 @@ test('Price Change for a discount item', async ({ page }) => {
 
   await expect(
     page.locator('.promo')
-  ).toBeVisible;
+  ).toBeVisible();
 
   await page.locator('.promo .buttons .yes').click();
   await page.locator('[aria-label="Cart page"]').click();
   await page.locator('[aria-label="Remove all Espresso"]').click();
   
   await expect(
-    page.getByRole('button', { name: 'Remove all (Discounted) Mocha'})
-  ).toBeVisible;
+    page.locator('button.delete[aria-label="Remove all (Discounted) Mocha"]')
+  ).toBeVisible();
 });
 
 test('buy discount item', async ({ page }) => {

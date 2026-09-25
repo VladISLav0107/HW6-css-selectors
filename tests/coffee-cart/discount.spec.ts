@@ -15,6 +15,6 @@ test('have Discount', async ({ page }) => {
   await page.locator('[aria-label="Cart page"]').click();
 
   await expect(
-    page.getByRole('button', { name: 'Remove all (Discounted) Mocha'})
+    page.locator('button.delete[aria-label="Remove all (Discounted) Mocha"]')
   ).toBeVisible();
 });

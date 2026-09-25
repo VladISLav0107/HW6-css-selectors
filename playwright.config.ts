@@ -45,6 +45,14 @@ export default defineConfig({
       },
     },
 
+       {
+      name: 'ARIA-old',
+      testDir: './tests/old_ARIA_test',
+      use: {
+        testIdAttribute: 'data-test',
+      },
+    },
+
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },

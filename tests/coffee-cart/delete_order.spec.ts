@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test('Delete order', async ({ page }) => {
   await page.goto('');
 
-  await page.getByTestId('Espresso').click();
+  await page.locator('[aria-label="Espresso"]').click();
 
   //await page.getByRole('link', { name: 'Cart page' }).click();
   await page.locator('[aria-label="Cart page"]').click();
