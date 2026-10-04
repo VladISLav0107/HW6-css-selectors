@@ -16,13 +16,13 @@ test('Price Change for a discount item', async ({ page }) => {
   await espressoLocator.click();
   await espressoLocator.click();
 
-  await expect( promoTextLocator ).toBeVisible;
+  await expect( promoTextLocator ).toBeVisible();
 
   await yesButtonLocator.click();
   await cartPageLink.click();
   await removeButtonLocator.click();
   
-  await expect( removeDiscountButton ).toBeVisible;
+  await expect( removeDiscountButton ).toBeVisible();
 });
 
 test('buy discount item', async ({ page }) => {

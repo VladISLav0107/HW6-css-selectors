@@ -15,10 +15,10 @@ test('have Discount', async ({ page }) => {
   await espressoLocator.click();
   await espressoLocator.click();
 
-  await expect( mochaLocator ).toBeVisible;
+  await expect( mochaLocator ).toBeVisible();
 
   await yesButtonLocator.click();
   await cartPageLink.click();
 
-  await expect( removeDiscountButton ).toBeVisible;
+  await expect( removeDiscountButton ).toBeVisible();
 });
