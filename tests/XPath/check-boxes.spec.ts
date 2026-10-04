@@ -33,7 +33,13 @@ test('Check the operation of the cheque boxes – increase in number', async ({ 
 test('Sorting and reordering', async ({ page }) => {
   await page.goto('');
 
-  await page.locator('//button[@data-testid="interactions-sort-name"]').dblclick();
+  await page.locator('//button[@data-testid="interactions-sort-name"]').click();
+
+  await expect( 
+    page.locator('(//tr[starts-with(@data-testid, "interactions-table-row-")])[1]')
+  ).toHaveAttribute("data-testid", "interactions-table-row-2");
+
+  await page.locator('//button[@data-testid="interactions-sort-name"]').click();
 
   await expect( 
     page.locator('(//tr[starts-with(@data-testid, "interactions-table-row-")])[1]')
@@ -45,9 +51,21 @@ test('Sorting and reordering', async ({ page }) => {
     page.locator('(//tr[starts-with(@data-testid, "interactions-table-row-")])[1]')
   ).toHaveAttribute("data-testid", "interactions-table-row-2")
 
+  await page.locator('//button[@data-testid="interactions-sort-status"]').click();
+
+  await expect(
+    page.locator('(//tr[starts-with(@data-testid, "interactions-table-row-")])[1]')
+  ).toHaveAttribute("data-testid", "interactions-table-row-4")
+
   await page.locator('//button[@data-testid="interactions-sort-duration"]').click();
   
   await expect(
     page.locator('(//tr[starts-with(@data-testid, "interactions-table-row-")])[1]')
   ).toHaveAttribute("data-testid", "interactions-table-row-4");
+
+  await page.locator('//button[@data-testid="interactions-sort-duration"]').click();
+  
+  await expect(
+    page.locator('(//tr[starts-with(@data-testid, "interactions-table-row-")])[1]')
+  ).toHaveAttribute("data-testid", "interactions-table-row-2");
 });
