@@ -5,8 +5,23 @@ test('Check the operation of the cheque boxes – increase in number', async ({ 
 
 
   await page.locator('//input[@data-testid="interactions-row-select-1"]').check();
+
+  await expect(
+    page.locator('//span[@data-testid="interactions-selected-count"]')
+  ).toContainText('Вибрано: 1');
+
   await page.locator('//input[@data-testid="interactions-row-select-2"]').check();
+
+  await expect(
+    page.locator('//span[@data-testid="interactions-selected-count"]')
+  ).toContainText('Вибрано: 2');
+
   await page.locator('//input[@data-testid="interactions-row-select-3"]').check();
+
+  await expect(
+    page.locator('//span[@data-testid="interactions-selected-count"]')
+  ).toContainText('Вибрано: 3');
+
   await page.locator('//input[@data-testid="interactions-row-select-4"]').check();
 
   await expect(
