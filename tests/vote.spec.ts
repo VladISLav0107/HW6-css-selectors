@@ -9,6 +9,9 @@ import { test, expect } from '@playwright/test';
     }
  }
 
+test ('Age 10 (under 18): voting is not allowed', async () => {
+    expect(getVotingMessage(10)).toBe("Ви ще не можете голосувати.");
+});
 
 test ('Age 17 (under 18): voting is not allowed', async () => {
     expect(getVotingMessage(17)).toBe("Ви ще не можете голосувати.");
@@ -16,6 +19,10 @@ test ('Age 17 (under 18): voting is not allowed', async () => {
 
 test ('Age 18 (boundary value): voting is allowed', async () => {
     expect(getVotingMessage(18)).toBe("Ви можете голосувати.");
+});
+
+test ('Age 19 (boundary value): voting is allowed', async () => {
+    expect(getVotingMessage(19)).toBe("Ви можете голосувати.");
 });
 
 test ('Age 25 (adult): voting is allowed', async () => {
