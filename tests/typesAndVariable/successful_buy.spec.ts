@@ -1,26 +1,22 @@
 import { test, expect } from '@playwright/test';
+import { openPaymentForm, fillPaymentForm, addCountedItem } from './page-actions';
 
 const baseUrl = "https://coffee-cart.app/";
 
 test('Successful buy', async ({ page }) => {
+
+  const paymentForm = page.locator('[aria-label="Payment form"]');
+  const successOrderLocator = page.locator('.snackbar.success');
+  const name = 'Test Name';
+  const email = 'test@gmail.com';
+
   await page.goto(baseUrl);
 
-  const espressoLocator = page.locator('[aria-label="Espresso"]');
-  const payButton = page.locator('button.pay');
-  const paymentForm = page.locator('[aria-label="Payment form"]');
-  const fieldName = page.locator('input#name');
-  const fieldEmail = page.locator('input#email');
-  const submiteButton = page.locator('button[type="submit"]');
-  const successOrderLocator = page.locator('.snackbar.success');
-
-  await espressoLocator.click();
-  await payButton.click();
-
+  await addCountedItem(page, 3);
+  await openPaymentForm(page);
   await expect( paymentForm ).toBeVisible();
   
-  await fieldName.fill('test');
-  await fieldEmail.fill('test@test.com');
-  await submiteButton.click();
+  await fillPaymentForm(page, name, email);
   
   await expect( successOrderLocator ).toBeVisible();
 });
